@@ -1,0 +1,59 @@
+-----------------
+query UserList{
+  User{
+    _id
+    firstName
+    lastName
+    email
+  }
+}
+-----------------
+query allQuotes{
+  quotes{
+    by
+    quote
+  }
+}
+-----------------------------
+query UserListwiththeirquote{
+  users{
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      by
+      quote
+    }
+  }
+}
+----------------------------
+query quoteById($userId: ID!){
+  quote(by: $userId){
+    quote
+    by
+  }
+}
+----------------------------
+query userById($userId: ID!){
+  user(_id: $userId){
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      quote
+      by
+    }
+  }
+}
+----------------------------
+mutation addUser($userNew: UserInput!){
+  user:signupUserDummy(userNew: $userNew){
+    firstName
+    lastName
+    email
+    password
+  }
+}
+mongodb password: psqjwIRlJehM8Dag 
